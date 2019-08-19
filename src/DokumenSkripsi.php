@@ -17,7 +17,7 @@ class DokumenSkripsi{
     private function pdf($first=null,$last=null,$array=false){
         $first = $first?"-f $first":"";
         $last = $last?"-l $last":"";
-        exec("E:\Windows\Dev\pdftotext\bin64\pdftotext -raw $first $last $this->file - 2>&1",$output);
+        exec("pdftotext -raw $first $last $this->file - 2>&1",$output);
         return $array?$output:implode("\n",$output);
     }
 
@@ -52,7 +52,7 @@ class DokumenSkripsi{
     }
 
     public function info(){
-        exec("E:\Windows\Dev\pdftotext\bin64\pdfinfo $this->file 2>&1",$output);
+        exec("pdfinfo $this->file 2>&1",$output);
         $output = implode("\n",$output);
         preg_match_all("/([^:\n]+):(?:\n|\s+([^\n]+))/",$output,$matches);
         $result = [];
