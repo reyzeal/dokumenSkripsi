@@ -1,0 +1,15 @@
+{
+    "name": "reyzeal/dokumen-skripsi",
+    "description": "Wrapper untuk metadata proposal dan laporan skripsi IF UPNYK",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rizal Ardhi Rahmadani",
+            "email": "rizal.ardhi.rahmadani@gmail.com"
+        }
+    ],
+    "require": {
+        "spatie/pdf-to-text": "^1.2"
+    }
+}
