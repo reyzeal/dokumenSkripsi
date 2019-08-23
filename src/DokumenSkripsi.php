@@ -38,8 +38,8 @@ class DokumenSkripsi{
 
     public function validate($nama,$nim){
         $cover = strtolower($this->first());
-        $nama = strpos($cover,strtolower($nama)) != -1;
-        $nim = strpos($cover,$nim) != -1;
+        $nama = strpos($cover,strtolower($nama)) != false;
+        $nim = strpos($cover,$nim) != false;
         return $nama && $nim ;
     }
 
