@@ -10,6 +10,7 @@
         }
     ],
     "require": {
+        "spatie/pdf-to-text" : "*"
     },
     "autoload": {
         "psr-4": {
