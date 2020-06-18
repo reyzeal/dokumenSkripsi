@@ -62,6 +62,7 @@ class DokumenSkripsi implements JsonSerializable{
 
     public function meta(){
         $esc = escapeshellarg($this->file);
+        exec("pdfinfo $esc",$output);
         $output = implode("\n",$output);
         preg_match_all("/([^:\n]+):(?:\n|\s+([^\n]+))/",$output,$matches);
         $result = [];
