@@ -8,7 +8,6 @@ class DokumenSkripsi implements JsonSerializable{
     protected $type=null;
     public function __construct($file){
         if(!file_exists($file)) die('file not found');
-
         $this->file= $file;
     }
 
@@ -58,11 +57,11 @@ class DokumenSkripsi implements JsonSerializable{
             $this->type = "Laporan";
         }
         $this->bab();
-        $this->info = $result;
+        $this->meta();
     }
 
-    private function info(){
-        exec("pdfinfo $this->file 2>&1",$output);
+    public function meta(){
+        $esc = escapeshellarg($this->file);
         $output = implode("\n",$output);
         preg_match_all("/([^:\n]+):(?:\n|\s+([^\n]+))/",$output,$matches);
         $result = [];
@@ -94,7 +93,7 @@ class DokumenSkripsi implements JsonSerializable{
         ];
     }
     public function bab($nama = null){
-        $metadata = $this->info();
+        $metadata = $this->meta();
         $pages = intval($metadata['Pages']);
         $bab = [];
         for($i=1;$i<=$pages;$i++){
